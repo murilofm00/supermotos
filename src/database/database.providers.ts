@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Moto } from 'src/entities/moto.entity';
+import { Usuario } from 'src/entities/usuario.entity';
 
 export const databaseProviders = [
   {
@@ -9,7 +10,8 @@ export const databaseProviders = [
         dialect: 'sqlite',
         storage: './assets/db/database.sqlite',
       });
-      sequelize.addModels([Moto]);
+      sequelize.options.omitNull = true;
+      sequelize.addModels([Moto, Usuario]);
       await sequelize.sync();
       return sequelize;
     },
