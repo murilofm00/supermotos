@@ -18,7 +18,8 @@
             ],
             "sourceMaps": true,
             "type": "node",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
