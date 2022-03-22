@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { SequelizeScopeError } from 'sequelize/types';
 import { Usuario } from 'src/entities/usuario.entity';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
@@ -18,8 +19,17 @@ export class UsuarioService {
       ...createUsuarioDto,
       isAdmin,
     });
-    await usuario.save();
-    return usuario;
+
+    try {
+      await usuario.save();
+      return usuario;
+    } catch (error) {
+      if (error.name === 'SequelizeUniqueConstraintError') {
+        throw new HttpException('Email já utilizado.', HttpStatus.CONFLICT);
+      } else {
+        throw new HttpException(error.errors[0].message, HttpStatus.CONFLICT);
+      }
+    }
   }
 
   findAll(): Promise<Usuario[]> {

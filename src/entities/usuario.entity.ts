@@ -1,4 +1,4 @@
-import { AllowNull, Column, Model, Table } from 'sequelize-typescript';
+import { AllowNull, Column, Model, Table, Unique } from 'sequelize-typescript';
 
 @Table
 export class Usuario extends Model {
@@ -7,6 +7,7 @@ export class Usuario extends Model {
   nome: string;
 
   @AllowNull(false)
+  @Unique
   @Column
   email: string;
 
