@@ -10,6 +10,7 @@ import { RolesGuard } from './auth/roles.guard';
 import { CategoriaModule } from './categoria/categoria.module';
 import { MotoModule } from './moto/moto.module';
 import { MarcaModule } from './marca/marca.module';
+import { ComentarioModule } from './comentario/comentario.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { MarcaModule } from './marca/marca.module';
     AuthModule,
     CategoriaModule,
     MarcaModule,
+    ComentarioModule,
   ],
   controllers: [AppController],
   providers: [

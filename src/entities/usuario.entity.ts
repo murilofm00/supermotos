@@ -1,4 +1,12 @@
-import { AllowNull, Column, Model, Table, Unique } from 'sequelize-typescript';
+import {
+  AllowNull,
+  Column,
+  HasMany,
+  Model,
+  Table,
+  Unique,
+} from 'sequelize-typescript';
+import { Comentario } from './comentario.entity';
 
 @Table
 export class Usuario extends Model {
@@ -18,4 +26,7 @@ export class Usuario extends Model {
   @AllowNull(false)
   @Column
   isAdmin: boolean;
+
+  @HasMany(() => Comentario)
+  comentarios: Comentario[];
 }
