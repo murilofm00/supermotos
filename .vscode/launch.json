@@ -14,7 +14,8 @@
             "runtimeExecutable": "yarn",
             "skipFiles": [
                 "<node_internals>/**",
-                "${workspaceFolder}/.yarn/**"
+                "${workspaceFolder}/.yarn/**",
+                "${workspaceFolder}/node_modules/**"
             ],
             "sourceMaps": true,
             "type": "node",

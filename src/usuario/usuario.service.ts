@@ -52,8 +52,8 @@ export class UsuarioService {
     return usuario;
   }
 
-  remove(id: number): void {
-    this.usuariosRepository.destroy({
+  remove(id: number) {
+    return this.usuariosRepository.destroy({
       where: {
         id: id,
       },

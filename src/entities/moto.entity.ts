@@ -1,4 +1,5 @@
-import { Table, Column, Model } from 'sequelize-typescript';
+import { Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import { Categoria } from './categoria.entity';
 
 @Table
 export class Moto extends Model {
@@ -13,4 +14,8 @@ export class Moto extends Model {
 
   @Column
   potencia: number;
+
+  @ForeignKey(() => Categoria)
+  @Column
+  idCategoria: number;
 }

@@ -16,6 +16,7 @@ import { UsuarioService } from './usuario.service';
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
+  @Roles(Role.Public)
   @Post()
   create(@Body() createUsuarioDto: CreateUsuarioDto) {
     return this.usuarioService.create(createUsuarioDto, false);
@@ -27,7 +28,7 @@ export class UsuarioController {
     return this.usuarioService.findAll();
   }
 
-  @Roles(Role.Admin)
+  @Roles(Role.User)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usuarioService.findOne(+id);

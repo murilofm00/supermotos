@@ -28,6 +28,10 @@ export class RolesGuard implements CanActivate {
       return user.isAdmin;
     }
 
+    if (roles.includes(Role.User)) {
+      return !!user;
+    }
+
     return false;
   }
 }
