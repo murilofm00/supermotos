@@ -1,11 +1,13 @@
 import {
   AllowNull,
+  BelongsTo,
   Column,
   ForeignKey,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { Categoria } from './categoria.entity';
+import { Marca } from './marca.entity';
 
 @Table
 export class Moto extends Model {
@@ -29,4 +31,15 @@ export class Moto extends Model {
   @AllowNull(false)
   @Column
   idCategoria: number;
+
+  @ForeignKey(() => Marca)
+  @AllowNull(false)
+  @Column
+  idMarca: number;
+
+  @BelongsTo(() => Categoria)
+  categoria: Categoria;
+
+  @BelongsTo(() => Marca)
+  marca: Marca;
 }

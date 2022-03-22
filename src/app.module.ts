@@ -9,6 +9,7 @@ import { JwtAuthGuard } from './auth/strategy/jwt/jwt-auth.guard';
 import { RolesGuard } from './auth/roles.guard';
 import { CategoriaModule } from './categoria/categoria.module';
 import { MotoModule } from './moto/moto.module';
+import { MarcaModule } from './marca/marca.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { MotoModule } from './moto/moto.module';
     UsuarioModule,
     AuthModule,
     CategoriaModule,
+    MarcaModule,
   ],
   controllers: [AppController],
   providers: [

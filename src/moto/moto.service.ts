@@ -20,7 +20,7 @@ export class MotoService {
   }
 
   findAll() {
-    return this.motosRepository.findAll<Moto>({ include: [Categoria] });
+    return this.motosRepository.findAll<Moto>({ include: Categoria });
   }
 
   findOne(id: number) {
