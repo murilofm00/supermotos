@@ -3,5 +3,7 @@ export class CreateMotoDto {
   ano: number;
   descricao: string;
   potencia: number;
+  imagem: string;
+  idMarca: number;
   idCategoria: number;
 }

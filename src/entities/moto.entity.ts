@@ -27,6 +27,10 @@ export class Moto extends Model {
   @Column
   potencia: number;
 
+  @AllowNull(false)
+  @Column
+  imagem: string;
+
   @ForeignKey(() => Categoria)
   @AllowNull(false)
   @Column
