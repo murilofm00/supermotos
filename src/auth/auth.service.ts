@@ -14,13 +14,14 @@ export class AuthService {
   async validarUsuario(email: string, senha: string): Promise<UsuarioDTO> {
     const usuario: Usuario = await this.usuarioService.findByEmail(email);
     if (usuario && usuario.senha === senha) {
-      return usuario;
+      return usuario as UsuarioDTO;
     }
     return null;
   }
 
   async login(usuario: any) {
     const payload: UsuarioDTO = {
+      id: usuario.id,
       nome: usuario.nome,
       email: usuario.email,
       isAdmin: usuario.isAdmin,

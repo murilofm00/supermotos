@@ -16,8 +16,8 @@ export class ComentarioService {
     const comentario: Comentario = this.comentariosRepository.build({
       ...createComentarioDto,
     });
-    await comentario.save();
-    return comentario;
+    await comentario.save({});
+    return this.findOne(comentario.id);
   }
 
   async findAll() {

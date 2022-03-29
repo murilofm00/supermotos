@@ -3,10 +3,12 @@ import {
   BelongsTo,
   Column,
   ForeignKey,
+  HasMany,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { Categoria } from './categoria.entity';
+import { Comentario } from './comentario.entity';
 import { Marca } from './marca.entity';
 
 @Table
@@ -46,4 +48,7 @@ export class Moto extends Model {
 
   @BelongsTo(() => Marca)
   marca: Marca;
+
+  @HasMany(() => Comentario)
+  comentarios: Comentario[];
 }

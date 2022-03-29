@@ -13,7 +13,6 @@ export const databaseProviders = [
         dialect: 'sqlite',
         storage: './assets/db/database.sqlite',
       });
-      sequelize.options.omitNull = true;
       sequelize.addModels([Moto, Usuario, Categoria, Marca, Comentario]);
       await sequelize.sync();
       return sequelize;

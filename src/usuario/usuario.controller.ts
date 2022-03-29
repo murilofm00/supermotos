@@ -6,6 +6,8 @@ import {
   Param,
   Patch,
   Post,
+  Req,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { Role, Roles } from 'src/auth/roles.decorator';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -30,14 +32,38 @@ export class UsuarioController {
 
   @Roles(Role.User)
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usuarioService.findOne(+id);
+  findOne(@Param('id') id: string, @Req() request: any) {
+    const requestUser = request?.user;
+    if (
+      requestUser &&
+      (requestUser.isAdmin || requestUser.id === parseInt(id))
+    ) {
+      return this.usuarioService.findOne(+id);
+    } else {
+      return new UnauthorizedException();
+    }
   }
 
   @Roles(Role.User)
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
-    return this.usuarioService.update(+id, updateUsuarioDto, false);
+  update(
+    @Param('id') id: string,
+    @Body() updateUsuarioDto: UpdateUsuarioDto,
+    @Req() request: any,
+  ) {
+    const requestUser = request?.user;
+    if (
+      requestUser &&
+      (requestUser.isAdmin || requestUser.id === parseInt(id))
+    ) {
+      return this.usuarioService.update(
+        +id,
+        updateUsuarioDto,
+        requestUser.isAdmin ? updateUsuarioDto.isAdmin : false,
+      );
+    } else {
+      return new UnauthorizedException();
+    }
   }
 
   @Roles(Role.Admin)
