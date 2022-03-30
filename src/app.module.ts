@@ -11,6 +11,7 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { MotoModule } from './moto/moto.module';
 import { MarcaModule } from './marca/marca.module';
 import { ComentarioModule } from './comentario/comentario.module';
+import { SobreModule } from './sobre/sobre.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ComentarioModule } from './comentario/comentario.module';
     CategoriaModule,
     MarcaModule,
     ComentarioModule,
+    SobreModule,
   ],
   controllers: [AppController],
   providers: [
