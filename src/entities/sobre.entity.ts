@@ -1,5 +1,5 @@
-import { AllowNull, Column, Model } from 'sequelize-typescript';
-
+import { AllowNull, Column, Model, Table } from 'sequelize-typescript';
+@Table
 export class Sobre extends Model {
   @AllowNull(false)
   @Column

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch } from '@nestjs/common';
 import { Role, Roles } from 'src/auth/roles.decorator';
 import { SobreDto } from './dto/sobre.dto';
 import { SobreService } from './sobre.service';
@@ -13,7 +13,7 @@ export class SobreController {
     return this.sobreService.update(motoDto);
   }
 
-  @Roles(Role.User)
+  @Roles(Role.Public)
   @Get()
   read() {
     return this.sobreService.find();
